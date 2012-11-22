@@ -15,7 +15,7 @@ object Application extends Controller {
   
   def index = Action(parse.anyContent) { request =>
     //Ok(views.html.index("Your new application is ready." + request))
-    Ok("Hello world" + request.body)
+    Ok("Hello world") //+ request.body)
     //Redirect(routes.Application.tasks)
   }
 
