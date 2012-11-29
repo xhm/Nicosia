@@ -1,7 +1,7 @@
 function initialize() {
     var mapOptions = {
         zoom: 7,
-        center: new google.maps.LatLng(-34.397, 150.644),
+        center: new google.maps.LatLng(-34.397, 147.644),
         mapTypeId: google.maps.MapTypeId.ROADMAP,
 		noClear: true,
         panControl: true,
@@ -17,6 +17,13 @@ function initialize() {
     };
     var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 }
+
+$(function() {
+		$('#datepicker').datePicker();
+		$('.dp-popup').draggable();
+		});
+			
+
 
 /*
 function loadScript() {

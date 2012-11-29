@@ -69,7 +69,12 @@ body, html {
 	width: 100%;
 	height: 100%;
 }
+.calendar-2 {
+	top: 10px !important;
+	left: 10px !important;
+}
 
+/*
 #tabs {
 	position: absolute;
 	width: 240px;
@@ -91,4 +96,59 @@ body, html {
 	border-right: 1px solid lightgray;
 	background: white;
 }
+	*/
+#tabs_wrapper {
+    width: 422px;
 }
+#tabs_container {
+    border-bottom: 1px solid #ccc;
+	background: white;
+}
+#tabs {
+    list-style: none;
+    padding: 5px 0 4px 0;
+    margin: 0 0 0 10px;
+    font: 0.75em arial;
+	background: white;
+}
+#tabs li {
+    display: inline;
+}
+#tabs li a {
+    border: 1px solid #ccc;
+    padding: 4px 6px;
+    text-decoration: none;
+    background-color: #eeeeee;
+    border-bottom: none;
+    outline: none;
+    border-radius: 5px 5px 0 0;
+    -moz-border-radius: 5px 5px 0 0;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+}
+#tabs li a:hover {
+    background-color: #dddddd;
+    padding: 4px 6px;
+}
+#tabs li.active a {
+    border-bottom: 1px solid #fff;
+    background-color: #fff;
+    padding: 4px 6px 5px 6px;
+    border-bottom: none;
+}
+#tabs li.active a:hover {
+    background-color: #eeeeee;
+    padding: 4px 6px 5px 6px;
+    border-bottom: none;
+}
+ 
+#tabs_content_container {
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 10px;
+    width: 400px;
+}
+.tab_content {
+    display: none;
+}
+
