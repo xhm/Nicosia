@@ -65,8 +65,8 @@ function initialize() {
 function customControl(controlDiv, panoramioLayer) {
 
 	var controlDate = document.createElement('div');
-	setControlStyle(controlDate);
 	$(controlDate).attr('class', 'datepicker');
+	setControlStyle(controlDate);
 	controlDate.innerHTML = 'Date';
 
 	controlDiv.appendChild(controlDate);
@@ -93,7 +93,6 @@ function customControl(controlDiv, panoramioLayer) {
 
 	var controlPanoramio = document.createElement('div');
 	setControlStyle(controlPanoramio);
-	controlPanoramio.style.cursor = 'pointer';
 	controlPanoramio.innerHTML = 'Panoramio';
 	$(controlPanoramio).click(function() { 
 		panoramioLayer.setMap(map);
@@ -102,13 +101,18 @@ function customControl(controlDiv, panoramioLayer) {
 
 	var controlFlickr = document.createElement('div');
 	setControlStyle(controlFlickr);
-	controlFlickr.style.cursor = 'pointer';
 	controlFlickr.innerHTML = 'Flickr';
 	controlDiv.appendChild(controlFlickr);
 
 	var controlSearch = document.createElement('input');
-	setControlStyle(controlSearch);
+	//setControlStyle(controlSearch);
+	controlSearch.style.border = 'solid';
 	controlSearch.style.width = '240px';
+	controlSearch.style.borderColor = 'grey';
+	controlSearch.style.borderWidth = '1px';
+	controlSearch.style.margin = '5px';
+	$(controlSearch).css('-webkit-box-shadow', 'rgba(0, 0, 0, 0.4) 0px 2px 4px');
+
 	$(controlSearch).click (function() { $(this).select(); });
 	var autocomplete = new google.maps.places.Autocomplete(controlSearch);
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -128,14 +132,16 @@ function customControl(controlDiv, panoramioLayer) {
 function setControlStyle(control) {
 	control.style.fontSize = '13px';
 	control.style.fontFamily = 'Arial, sans-serif';
+	control.style.cursor = 'pointer';
 	control.style.color = '#333';
 	control.style.margin = '5px';
-	control.style.backgroundColor = 'white';
 	control.style.borderStyle = 'solid';
 	control.style.borderColor = 'grey';
 	control.style.borderWidth = '1px';
 	control.style.position = 'relative';
 	control.style.float = 'left';
+	control.className += ' customControl';
+	$(control).hover(function() { $(this).toggleClass('customControl_hover')});
 	$(control).css('-webkit-box-shadow', 'rgba(0, 0, 0, 0.4) 0px 2px 4px');
 
 	control.style.padding = '1px 6px';
