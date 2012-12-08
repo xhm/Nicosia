@@ -1,4 +1,20 @@
+body, html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+#map_canvas {
+	width: 100%;
+	height: 100%;
+}
+
 /*
+.calendar-2 {
+	top: 10px !important;
+	left: 10px !important;
+}
+
 #tabs {
 	position: relative;
 	padding-right: 30.5em;
@@ -59,20 +75,6 @@
 }
 */
 
-body, html {
-	height: 100%;
-	width: 100%;
-	margin: 0;
-	padding: 0;
-}
-#map_canvas {
-	width: 100%;
-	height: 100%;
-}
-.calendar-2 {
-	top: 10px !important;
-	left: 10px !important;
-}
 
 /*
 #tabs {
@@ -96,7 +98,6 @@ body, html {
 	border-right: 1px solid lightgray;
 	background: white;
 }
-	*/
 #tabs_wrapper {
     width: 422px;
 }
@@ -152,3 +153,4 @@ body, html {
     display: none;
 }
 
+	*/

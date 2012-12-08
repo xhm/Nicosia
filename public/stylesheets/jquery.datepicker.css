@@ -27,11 +27,11 @@ table.jCalendar td.today {
 	color: #fff;
 }
 table.jCalendar td.selected {
-	background: #357AE8;
+	background: #ddd;
 	color: #fff;
 }
 table.jCalendar td.selected.dp-hover {
-	background: #357AE8;
+	background: #ddd;
 	color: #333;
 }
 table.jCalendar td.dp-hover,
@@ -70,7 +70,7 @@ div.dp-popup {
 	line-height: 15px;
 	top: 10px;
 	left: 10px;
-	background-color: rgba(0, 0, 0, 0.1);
+	/*background-color: rgba(0, 0, 0, 0.1);*/
 }
 div#dp-popup {
 	position: absolute;
@@ -97,7 +97,7 @@ a#dp-close:hover {
 div.dp-popup a {
 	color: #000;
 	text-decoration: none;
-	padding: 3px 2px 0;
+	padding: 3px 3px 0;
 }
 div.dp-popup div.dp-nav-prev {
 	position: absolute;

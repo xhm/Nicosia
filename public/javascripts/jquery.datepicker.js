@@ -3,7 +3,7 @@
  * Dual licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) 
  * and GPL (http://www.opensource.org/licenses/gpl-license.php) licenses.
  * .
- * $Id: jquery.datePicker.js 108 2011-11-17 21:19:57Z kelvin.luck@gmail.com $
+ * $Id$
  **/
 
 (function($){
@@ -237,7 +237,7 @@
 					
 					if (!alreadyExists && s.createButton) {
 						// create it!
-						/*controller.button = $('<a href="#" class="dp-choose-date" title="' + $.dpText.TEXT_CHOOSE_DATE + '">' + $.dpText.TEXT_CHOOSE_DATE + '</a>')
+						controller.button = $('<a href="#" class="dp-choose-date" title="' + $.dpText.TEXT_CHOOSE_DATE + '">' + $.dpText.TEXT_CHOOSE_DATE + '</a>')
 								.bind(
 									'click',
 									function()
@@ -247,9 +247,7 @@
 										return false;
 									}
 								);
-				   	  $this.after(controller.button);*/
-					  $this.bind('click', function() { $this.dpDisplay(); this.blur(); return false; });
-					  $this.dpDisplay();
+						$this.after(controller.button);
 					}
 					
 					if (!alreadyExists && $this.is(':text')) {
@@ -797,11 +795,11 @@
 				} else {
 					$createIn = $('body');
 					attrs = {
-						'id'	:	'dp-popup',
+						'id'		:	'dp-popup',
 						'class'	:	'dp-popup'
 					};
 					cssRules = {
-						'top'	:	eleOffset.top + c.verticalOffset + $(eleAlignTo).parent().height() + 5,
+						'top'	:	eleOffset.top + c.verticalOffset,
 						'left'	:	eleOffset.left + c.horizontalOffset
 					};
 					
@@ -951,7 +949,7 @@
 						if (!$this.is('.disabled')) {
 							c.setSelected(d, !$this.is('.selected') || !c.selectMultiple, false, true);
 							if (c.closeOnSelect) {
-								// Focus the next input in the form…
+								// Focus the next input in the formâ€¦
 								if (c.settings.autoFocusNextInput) {
 									var ele = c.ele;
 									var found = false;
@@ -968,7 +966,9 @@
 										}
 									);
 								} else {
-									c.ele.focus();
+									try {
+										c.ele.focus();
+									} catch (e) {}
 								}
 								c._closeCalendar();
 							}
@@ -1173,19 +1173,19 @@
 		HEADER_FORMAT		:	'mmmm yyyy'
 	};
 	// version
-	$.dpVersion = '$Id: jquery.datePicker.js 108 2011-11-17 21:19:57Z kelvin.luck@gmail.com $';
+	$.dpVersion = '$Id$';
 
 	$.fn.datePicker.defaults = {
 		month				: undefined,
 		year				: undefined,
 		showHeader			: $.dpConst.SHOW_HEADER_SHORT,
-		startDate			: new Date("01/01/2010"),
+		startDate			: undefined,
 		endDate				: undefined,
-		inline				: true,
+		inline				: false,
 		renderCallback		: null,
 		createButton		: true,
 		showYearNavigation	: true,
-		closeOnSelect		: false,
+		closeOnSelect		: true,
 		displayClose		: false,
 		selectMultiple		: false,
 		numSelectable		: Number.MAX_VALUE,
