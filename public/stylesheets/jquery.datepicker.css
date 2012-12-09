@@ -75,6 +75,7 @@ div.dp-popup {
 div#dp-popup {
 	position: absolute;
 	z-index: 199;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px;
 }
 div.dp-popup h2 {
 	font-size: 12px;
@@ -95,7 +96,7 @@ a#dp-close:hover {
 	text-decoration: underline;
 }
 div.dp-popup a {
-	color: #000;
+	color: #666;
 	text-decoration: none;
 	padding: 3px 3px 0;
 }

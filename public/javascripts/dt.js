@@ -55,19 +55,24 @@ function initialize() {
 	});
 
 	var controlDiv = document.createElement('div');
-	customControl(controlDiv, panoramioLayer);
+	customControl(controlDiv);
 
 	controlDiv.index = 1;
 
 	map.controls[google.maps.ControlPosition.TOP_LEFT].push(controlDiv);
+
+	google.maps.event.addDomListener(map, 'click', function(event) {
+		$('input').blur();
+	});
 }
 
-function customControl(controlDiv, panoramioLayer) {
+function customControl(controlDiv) {
 
 	var controlDate = document.createElement('div');
 	$(controlDate).attr('class', 'datepicker');
 	setControlStyle(controlDate);
 	controlDate.innerHTML = 'Date';
+	controlDate.style.width = '30px';
 
 	controlDiv.appendChild(controlDate);
 
@@ -89,47 +94,57 @@ function customControl(controlDiv, panoramioLayer) {
 			}
 		);
 	
-	$('.datepicker').dpSetOffset(10, 30);
+	$(controlDate).dpSetOffset(24, 0);
 
 	var controlPanoramio = document.createElement('div');
 	setControlStyle(controlPanoramio);
 	controlPanoramio.innerHTML = 'Panoramio';
+	controlPanoramio.style.width = '68px';
+	controlPanoramio.style.textAlign = 'center';
 	$(controlPanoramio).click(function() { 
-		panoramioLayer.setMap(map);
+		panoramioLayer.setMap(panoramioLayer.getMap() ? null : map);
+		if (controlPanoramio.style.fontWeight == 'bold') {
+			controlPanoramio.style.fontWeight = 'normal';
+		} else {
+			controlPanoramio.style.fontWeight = 'bold';
+		}
 	});
 	controlDiv.appendChild(controlPanoramio);
 
 	var controlFlickr = document.createElement('div');
 	setControlStyle(controlFlickr);
 	controlFlickr.innerHTML = 'Flickr';
+	controlFlickr.style.width = '30px';
 	controlDiv.appendChild(controlFlickr);
 
 	var controlSearch = document.createElement('input');
-	//setControlStyle(controlSearch);
 	controlSearch.style.border = 'solid';
-	controlSearch.style.width = '240px';
+	controlSearch.style.width = '360px';
 	controlSearch.style.borderColor = 'grey';
 	controlSearch.style.borderWidth = '1px';
 	controlSearch.style.margin = '5px';
+	controlSearch.style.color = '#333';
 	$(controlSearch).css('-webkit-box-shadow', 'rgba(0, 0, 0, 0.4) 0px 2px 4px');
+	$(controlSearch).css('box-shadow', 'rgba(0, 0, 0, 0.4) 0px 2px 4px');
 
 	$(controlSearch).click (function() { $(this).select(); });
 	var autocomplete = new google.maps.places.Autocomplete(controlSearch);
 	google.maps.event.addListener(autocomplete, 'place_changed', function() {
 		var place = autocomplete.getPlace();
-		if (place.geometry.viewport) {
-			map.fitBounds(place.geometry.viewport);
-		} else {
-			map.setCenter(place.geometry.location);
-			map.setZoom(17);
+		if (place.geometry) { 
+			if (place.geometry.viewport) {
+				map.fitBounds(place.geometry.viewport);
+			} else {
+				map.setCenter(place.geometry.location);
+				map.setZoom(17);
+			}
 		}
-		map.setCenter(place.geometry.location);
-		$(controlSearch).blur();
 	});
 	controlDiv.appendChild(controlSearch);
 }
 
 function setControlStyle(control) {
+	//control.style.width = '100%';
 	control.style.fontSize = '13px';
 	control.style.fontFamily = 'Arial, sans-serif';
 	control.style.cursor = 'pointer';
@@ -143,6 +158,7 @@ function setControlStyle(control) {
 	control.className += ' customControl';
 	$(control).hover(function() { $(this).toggleClass('customControl_hover')});
 	$(control).css('-webkit-box-shadow', 'rgba(0, 0, 0, 0.4) 0px 2px 4px');
+	$(control).css('box-shadow', 'rgba(0, 0, 0, 0.4) 0px 2px 4px');
 
 	control.style.padding = '1px 6px';
 }
