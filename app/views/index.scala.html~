@@ -1,6 +1,0 @@
-@(title: String)
-
-@main({title}) {
-  <div id="map_canvas"></div>
-}
-
