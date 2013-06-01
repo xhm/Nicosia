@@ -21,6 +21,8 @@ object Application extends Controller {
   def photoDetail = Action(parse.json) { request => 
     (request.body \ "dateString").asOpt[String].map { dateString =>
       val date = new DateTime(dateString toLong)
+      //Logger.info(date toString)
+      //println(date toString)
       Ok(toJson(
         Map("Lat" -> -34, "Lng" -> 147)
         //Map("date" -> date.year().get())
